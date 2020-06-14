@@ -9,7 +9,7 @@ const guessField = document.querySelector('.guessField');
 
 let guessCount = 1;
 let resetButton;
-guessField.focus();
+//guessField.focus();
 
 let randomNumber = Math.floor(Math.random() * 100) + 1;;
 console.log(randomNumber);
@@ -41,7 +41,7 @@ function checkGuess() {
 
   guessCount++;
   guessField.value = "";
-  guessField.focus();
+  //guessField.focus();
 };
 
 guessSubmit.addEventListener("click", checkGuess);
@@ -49,27 +49,27 @@ guessSubmit.addEventListener("click", checkGuess);
 function setGameOver() {
   guessField.disabled = true;
   guessSubmit.disabled = true;
-  resetButton = document.querySelector('#resetb');
-  //document.body.append(resetButton);
+  resetButton = document.createElement("button");
+  resetButton.textContent = "Play new game";
+  //resetButton = document.querySelector('#resetb');
+  document.body.append(resetButton);
   resetButton.addEventListener('click', resetGame);
 };
 
 function resetGame() {
   guessCount = 1;
-
   const resetParas = document.querySelectorAll('resultParas p');
   for (let i = 0; i < resetParas.length; i++) {
     resetParas[i].textContent = '';
   }
+  resetButton.parentNode.removeChild(resetButton);
+
+  guessField.disabled = false;
+  guessSubmit.disabled = false;
+  guessField.value = '';
+  guessField.focus();
+
+  lastResult.style.backgroundColor = 'white';
+
+  randomNumber = Math.floor(Math.random() * 100) + 1;
 }
-
-//resetButton.parentNode.removeChild(resetButton);
-
-guessField.disabled = false;
-guessSubmit.disabled = false;
-guessField.value = '';
-guessField.focus();
-
-lastResult.style.backgroundColor = 'white';
-
-randomNumber = Math.floor(Math.random() * 100) + 1;
