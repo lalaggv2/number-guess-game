@@ -48,8 +48,8 @@ guessSubmit.addEventListener("click", checkGuess);
 function setGameOver() {
   guessField.disabled = true;
   guessSubmit.disabled = true;
-  resetButton = document.createElement('button');
-  document.body.append(resetButton);
+  resetButton = document.getElementById('#resetb');
+  //document.body.append(resetButton);
   resetButton.addEventListener('click', resetGame);
 };
 
@@ -62,7 +62,7 @@ function resetGame() {
   }
 }
 
-resetButton.parentNode.removeChild(resetButton);
+//resetButton.parentNode.removeChild(resetButton);
 
 guessField.disabled = false;
 guessSubmit.disabled = false;
